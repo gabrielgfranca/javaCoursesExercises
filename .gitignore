@@ -1,0 +1,22 @@
+# Build (Maven)
+target/
+
+# Logs
+*.log
+
+# IDEs
+
+## IntelliJ IDEA
+.idea/
+*.iml
+
+## VS Code
+.vscode/
+
+# OS
+
+## Linux / macOS
+.DS_Store
+
+## Windows
+Thumbs.db
