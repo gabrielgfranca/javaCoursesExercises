@@ -1,10 +1,10 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.ex001_list.Program;
+import com.javacourseexercises.ex002_matriz.Program;
 
 public class Main {
     public static void main(String[] args) {
-        Program ex001List = new Program();
-        ex001List.program();
+        Program ex002Matriz = new Program();
+        ex002Matriz.program();
     }
 }
