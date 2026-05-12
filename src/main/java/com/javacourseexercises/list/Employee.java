@@ -1,4 +1,4 @@
-package com.javacourseexercises.ex001_list;
+package com.javacourseexercises.list;
 
 public class Employee {
     private String id;

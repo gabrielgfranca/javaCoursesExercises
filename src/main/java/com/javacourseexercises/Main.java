@@ -1,6 +1,6 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.ex002_matriz.Program;
+import com.javacourseexercises.matriz.Program;
 
 public class Main {
     public static void main(String[] args) {

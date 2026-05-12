@@ -1,4 +1,4 @@
-package com.javacourseexercises.ex002_matriz;
+package com.javacourseexercises.matriz;
 
 import java.util.Locale;
 import java.util.Scanner;
