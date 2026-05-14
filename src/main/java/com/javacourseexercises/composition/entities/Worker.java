@@ -1,7 +1,6 @@
 package com.javacourseexercises.composition.entities;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import com.javacourseexercises.composition.entities.enums.WorkerLevel;
