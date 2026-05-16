@@ -1,13 +1,13 @@
 package com.javacourseexercises.composition1.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.javacourseexercises.composition1.entities.enums.OrderStatus;
 
 public class Order {
-    private Date moment;
+    private LocalDateTime  moment;
     private OrderStatus status;
 
     private List<OrderItem> orderItems = new ArrayList<>();
@@ -15,14 +15,13 @@ public class Order {
 
     Order(){}
 
-    public Order(Date moment, OrderStatus status, List<OrderItem> orderItems, Client client) {
+    public Order(LocalDateTime moment, OrderStatus status, Client client) {
         this.moment = moment;
         this.status = status;
-        this.orderItems = orderItems;
         this.client = client;
     }
 
-    public Date getMoment() {
+    public LocalDateTime getMoment() {
         return moment;
     }
     public OrderStatus getStatus() {
@@ -35,7 +34,7 @@ public class Order {
         return client;
     }
 
-    public void setMoment(Date moment) {
+    public void setMoment(LocalDateTime moment) {
         this.moment = moment;
     }
     public void setStatus(OrderStatus status) {
@@ -54,6 +53,14 @@ public class Order {
     }
 
     public double total(){
-        return orderItems.stream().mapToDouble(OrderItem::getPrice).sum();
+        double total = 0;
+
+        for(OrderItem item : orderItems){
+            int quantity = item.getQuantity();
+            double price = item.getPrice();
+            total += quantity * price;
+        }
+
+        return total;
     }
 }

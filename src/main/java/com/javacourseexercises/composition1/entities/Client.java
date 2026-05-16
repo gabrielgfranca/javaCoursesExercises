@@ -1,15 +1,16 @@
 package com.javacourseexercises.composition1.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Client {
     private String name;
     private String email;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     public Client() {}
 
-    public Client(String name, String email, Date dateOfBirth) {
+    public Client(String name, String email, LocalDate dateOfBirth) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -21,7 +22,7 @@ public class Client {
     public String getEmail() {
         return email;
     }
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -31,7 +32,13 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return "Client: " + name + " (" + dateOfBirth.format(fmt) + ")" + " - " + email;
     }
 }
