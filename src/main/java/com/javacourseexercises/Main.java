@@ -1,6 +1,6 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.polimorfismo.Program;
+import com.javacourseexercises.polimorfismo1.Program;
 
 public class Main {
     public static void main(String[] args) {
