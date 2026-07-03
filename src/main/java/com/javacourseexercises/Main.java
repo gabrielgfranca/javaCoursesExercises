@@ -1,10 +1,10 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.polimorfismo1.Program;
+import com.javacourseexercises.abstract0.Program;
 
 public class Main {
     public static void main(String[] args) {
-        Program polimorfismo = new Program();
-        polimorfismo.run();
+        Program abstractEx = new Program();
+        abstractEx.run();
     }
 }
