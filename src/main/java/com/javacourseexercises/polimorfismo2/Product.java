@@ -1,4 +1,4 @@
-package com.javacourseexercises.polimorfismo1;
+package com.javacourseexercises.polimorfismo2;
 
 public class Product {
     private String name;

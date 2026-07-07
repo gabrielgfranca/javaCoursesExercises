@@ -1,4 +1,4 @@
-package com.javacourseexercises.composition.entities;
+package com.javacourseexercises.composition1.entities;
 
 public class Department {
     private String name;

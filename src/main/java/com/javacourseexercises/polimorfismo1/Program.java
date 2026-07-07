@@ -3,55 +3,50 @@ package com.javacourseexercises.polimorfismo1;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 
 public class Program {
+
     public void run() {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        List<Product> productsList = new java.util.ArrayList<>();
+        List<Employee> employeesList = new java.util.ArrayList<>();
 
-        IO.print("Enter the number of products: ");
-        int productsAmount = sc.nextInt();
+        IO.print("Enter the number of employees: ");
+        int employees = sc.nextInt();
         sc.nextLine();
 
-        for (int i = 1; i <= productsAmount; i++) {
-            IO.println("Product #" + i + " data:");
+        for (int i = 1; i <= employees; i++) {
+            IO.println("Employee #" + i + " data:");
 
-            IO.print("Common, Used or Imported (c/u/i)? ");
-            char productType = sc.nextLine().toLowerCase().charAt(0);
+            IO.print("Outsource employee (y/n)? ");
+            char outsourced = sc.nextLine().toLowerCase().charAt(0);
 
             IO.print("Name: ");
             String name = sc.nextLine().toUpperCase();
 
-            IO.print("Price: ");
-            double price = sc.nextDouble();
+            IO.print("Hours: ");
+            int hours = sc.nextInt();
             sc.nextLine();
 
-            if (productType == 'c') {
-                productsList.add(new Product(name, price));
-            } else if (productType == 'i') {
-                IO.print("Customs Fee: ");
-                double customsFee = sc.nextDouble();
-                sc.nextLine();
-                productsList.add(new ImportedProduct(name, price, customsFee));
-            } else if (productType == 'u') {
-                IO.print("Manufacture Date (dd/MM/yyyy): ");
-                String manufactureDateStr = sc.nextLine();
-                LocalDate manufactureDate = LocalDate.parse(manufactureDateStr, fmt);
+            IO.print("Value per hour: ");
+            double valuePerHour = sc.nextDouble();
+            sc.nextLine();
 
-                productsList.add(new UsedProduct(name, price, manufactureDate));
+            if (outsourced == 'y') {
+                IO.print("Additional charge: ");
+                double additionalCharge = sc.nextDouble();
+                sc.nextLine();
+                employeesList.add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
+            } else {
+                employeesList.add(new Employee(name, hours, valuePerHour));
             }
         }
 
         IO.println();
-        IO.println("PRODUCTS:");
-        for (Product product : productsList) {
-            IO.println(product.priceTag());
+        IO.println("PAYMENTS:");
+        for (Employee emp : employeesList) {
+            IO.println(emp.getName() + " - $ " + String.format("%.2f", emp.payment()));
         }
 
         sc.close();

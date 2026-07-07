@@ -1,4 +1,4 @@
-package com.javacourseexercises.composition.entities.enums;
+package com.javacourseexercises.composition1.entities.enums;
 
 public enum WorkerLevel {
     JUNIOR,

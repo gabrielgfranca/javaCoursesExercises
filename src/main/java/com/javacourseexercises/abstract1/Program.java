@@ -1,4 +1,4 @@
-package com.javacourseexercises.abstract0;
+package com.javacourseexercises.abstract1;
 
 import java.util.List;
 import java.util.Locale;

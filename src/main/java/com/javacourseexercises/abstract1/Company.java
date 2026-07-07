@@ -1,4 +1,4 @@
-package com.javacourseexercises.abstract0;
+package com.javacourseexercises.abstract1;
 
 public class Company extends TaxPayer {
     private Integer numberOfEmployees;

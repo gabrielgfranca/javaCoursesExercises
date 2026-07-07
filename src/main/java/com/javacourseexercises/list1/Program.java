@@ -1,4 +1,4 @@
-package com.javacourseexercises.list;
+package com.javacourseexercises.list1;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.javacourseexercises.composition1.entities.enums;
+package com.javacourseexercises.composition2.entities.enums;
 
 public enum OrderStatus {
     PENDING_PAYMENT,

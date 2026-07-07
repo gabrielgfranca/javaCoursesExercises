@@ -1,4 +1,4 @@
-package com.javacourseexercises.composition1.entities;
+package com.javacourseexercises.composition2.entities;
 
 public class Product {
     private String name;

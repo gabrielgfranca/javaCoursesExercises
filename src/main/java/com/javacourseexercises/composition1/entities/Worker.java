@@ -1,9 +1,9 @@
-package com.javacourseexercises.composition.entities;
+package com.javacourseexercises.composition1.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.javacourseexercises.composition.entities.enums.WorkerLevel;
+import com.javacourseexercises.composition1.entities.enums.WorkerLevel;
 
 public class Worker {
     private String name;

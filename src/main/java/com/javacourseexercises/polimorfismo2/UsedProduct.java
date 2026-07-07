@@ -1,4 +1,4 @@
-package com.javacourseexercises.polimorfismo1;
+package com.javacourseexercises.polimorfismo2;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

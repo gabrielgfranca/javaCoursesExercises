@@ -1,4 +1,4 @@
-package com.javacourseexercises.polimorfismo;
+package com.javacourseexercises.polimorfismo1;
 
 public class Employee {
     private String name;

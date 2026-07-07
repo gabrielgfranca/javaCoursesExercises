@@ -1,10 +1,10 @@
-package com.javacourseexercises.composition1.entities;
+package com.javacourseexercises.composition2.entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.javacourseexercises.composition1.entities.enums.OrderStatus;
+import com.javacourseexercises.composition2.entities.enums.OrderStatus;
 
 public class Order {
     private LocalDateTime  moment;

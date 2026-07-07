@@ -1,4 +1,4 @@
-package com.javacourseexercises.composition1.entities;
+package com.javacourseexercises.composition2.entities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

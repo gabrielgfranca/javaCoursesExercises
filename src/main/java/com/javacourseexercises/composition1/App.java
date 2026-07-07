@@ -1,73 +1,65 @@
 package com.javacourseexercises.composition1;
 
-
-import com.javacourseexercises.composition1.entities.Client;
-import com.javacourseexercises.composition1.entities.Order;
-import com.javacourseexercises.composition1.entities.OrderItem;
-import com.javacourseexercises.composition1.entities.Product;
-import com.javacourseexercises.composition1.entities.enums.OrderStatus;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
+import com.javacourseexercises.composition1.entities.Department;
+import com.javacourseexercises.composition1.entities.HourContract;
+import com.javacourseexercises.composition1.entities.Worker;
+import com.javacourseexercises.composition1.entities.enums.WorkerLevel;
+
 public class App {
     public static void main(String[] args) {
-
+        
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        IO.println("Enter client data:");
-        IO.print("Name: ");
-        String name = sc.nextLine();
-        IO.print("Email: ");
-        String email = sc.nextLine();
-        IO.print("Birth date (DD/MM/YYYY): ");
-        LocalDate birthDate = LocalDate.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        Client client = new Client(name, email, birthDate);
-
-        IO.println();
-
-        IO.println("Enter order data:");
-        IO.print("Status: ");
-        OrderStatus status = OrderStatus.valueOf(sc.nextLine().toUpperCase().trim());
-        Order order = new Order(LocalDateTime.now(), status, client);
-
-        IO.print("How many items to this order? ");
-        int items = sc.nextInt();
+        System.out.print("Enter department name: ");
+        String deptName = sc.nextLine();
+        System.out.println("Enter worker data: ");
+        System.out.print("Name: ");
+        String workerName = sc.nextLine();
+        System.out.print("Level: ");
+        WorkerLevel workerLevel = WorkerLevel.valueOf(sc.nextLine());
+        System.out.print("Base salary: ");
+        Double baseSalary = sc.nextDouble();
         sc.nextLine();
 
-        for  (int i=1; i<=items; i++) {
-            IO.println("Enter #" + i + " item data:");
+        Worker worker = new Worker(workerName, workerLevel, baseSalary, new Department(deptName));
 
-            IO.print("Product name: ");
-            String productName = sc.nextLine();
-            IO.print("Product price: ");
-            double productPrice = sc.nextDouble();
-            sc.nextLine();
-            IO.print("Quantity: ");
-            int quantity = sc.nextInt();
-            sc.nextLine();
-
-            Product product = new Product(productName, productPrice);
-            OrderItem item = new OrderItem(quantity, productPrice, product);
-
-            order.addItem(item);
+        System.out.print("How many contracts to this worker? ");
+        int n = sc.nextInt();
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Enter contract #" + i + " data:");
+            
+            System.out.print("Date (DD/MM/YYYY): ");
+            LocalDate ContractDate = LocalDate.parse(sc.next(), fmt);
+            
+            System.out.print("Value per hour: ");
+            Double valuePerHour = sc.nextDouble();
+            
+            System.out.print("Duration (Hours): ");
+            int hours = sc.nextInt();
+            
+            HourContract contract = new HourContract(ContractDate, valuePerHour, hours);
+            worker.addContract(contract);
         }
+        
+        System.out.println();
+        sc.nextLine();
+        
+        System.out.print("Enter month and year to calculate income (MM/YYYY): ");
+        String monthAndYear = sc.nextLine();
 
-        IO.println();
+        int month = Integer.parseInt(monthAndYear.substring(0, 2));
+        int year = Integer.parseInt(monthAndYear.substring(3));
 
-        IO.println("ORDER SUMMARY");
-        IO.println("Moment: " + order.getMoment().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm")));
-        IO.println("Status: " + status);
-        IO.println(client.toString());
-        IO.println("Items: " );
-        for (OrderItem item : order.getOrderItems()) {
-            IO.println(item.getProduct().getName() + ", $" + item.getPrice() + ", Quantity: " + item.getQuantity() + ", Subtotal: $" + item.subTotal());
-        }
-        IO.println("Total price: " + order.total());
+        System.out.println("Name: " + worker.getName());
+        System.out.println("Department: " + worker.getDepartment().getName());
+        System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f", worker.income(year, month)));
 
         sc.close();
     }

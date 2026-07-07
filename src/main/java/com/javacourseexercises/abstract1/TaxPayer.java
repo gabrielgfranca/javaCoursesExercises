@@ -1,4 +1,4 @@
-package com.javacourseexercises.abstract0;
+package com.javacourseexercises.abstract1;
 
 public abstract class TaxPayer {
     private String name;

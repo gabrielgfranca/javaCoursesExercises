@@ -1,4 +1,4 @@
-package com.javacourseexercises.abstract0;
+package com.javacourseexercises.abstract1;
 
 public class Individual extends TaxPayer {
     private Double healthExpenditures;
