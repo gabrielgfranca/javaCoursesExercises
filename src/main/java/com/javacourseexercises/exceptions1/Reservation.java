@@ -1,51 +1,63 @@
 package com.javacourseexercises.exceptions1;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Reservation {
-    private Integer roonNumber;
-    private LocalDate checkIn;
-    private LocalDate checkOut;
+    private Integer roomNumber;
+    private Date checkIn;
+    private Date checkOut;
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Reservation() {
     }
 
-    public Reservation(Integer roonNumber, LocalDate checkIn, LocalDate checkOut) {
-        this.roonNumber = roonNumber;
+    public Reservation(Integer roomNumber, Date checkIn, Date checkOut) {
+        this.roomNumber = roomNumber;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
 
     public Integer getRoonNumber() {
-        return roonNumber;
+        return roomNumber;
     }
 
     public void setRoonNumber(Integer roonNumber) {
-        this.roonNumber = roonNumber;
+        this.roomNumber = roonNumber;
     }
 
-    public LocalDate getCheckIn() {
+    public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(LocalDate checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public LocalDate getCheckOut() {
+    public Date getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(LocalDate checkOut) {
-        this.checkOut = checkOut;
+    public long duration() {
+        long diff = checkOut.getTime() - checkIn.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
-    public Integer duration() {
-        return 0;
-    }
-
-    public void updateDates(LocalDate checkIn, LocalDate checkOut) {
+    public void updateDates(Date checkIn, Date checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
+    }
+
+    @Override
+    public String toString() {
+        return "Room "
+                + roomNumber
+                + ", check-in: "
+                + sdf.format(checkIn)
+                + ", check-out: "
+                + sdf.format(checkOut)
+                + ", "
+                + duration()
+                + "nights";
     }
 }
