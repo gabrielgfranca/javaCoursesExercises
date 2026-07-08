@@ -1,10 +1,10 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.abstract1.Program;
+import com.javacourseexercises.exceptions1.application.Program;
 
 public class Main {
     public static void main(String[] args) {
-        Program abstractEx = new Program();
-        abstractEx.run();
+        Program exceptions = new Program();
+        exceptions.run();
     }
 }

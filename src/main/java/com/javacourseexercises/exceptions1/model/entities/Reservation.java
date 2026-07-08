@@ -1,8 +1,8 @@
-package com.javacourseexercises.exceptions1;
+package com.javacourseexercises.exceptions1.model.entities;
+
+import com.javacourseexercises.exceptions1.model.exceptions.DomainExceptions;
 
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -16,17 +16,20 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Integer roomNumber, Date checkIn, Date checkOut) {
+    public Reservation(Integer roomNumber, Date checkIn, Date checkOut) throws DomainExceptions {
+        if (!checkOut.after(checkIn)) {
+            throw new DomainExceptions("Error in reservation: Check-out data must be after check-in date");
+        }
         this.roomNumber = roomNumber;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
 
-    public Integer getRoonNumber() {
+    public Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoonNumber(Integer roonNumber) {
+    public void setRoomNumber(Integer roonNumber) {
         this.roomNumber = roonNumber;
     }
 
@@ -43,17 +46,16 @@ public class Reservation {
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
-    public String updateDates(Date checkIn, Date checkOut) {
+    public void updateDates(Date checkIn, Date checkOut) throws DomainExceptions {
         Date now = new Date();
         if (checkIn.before(now) || checkOut.before(now)) {
-            return "Error in reservation: Reservation dates for update must be futures dates";
+            throw new DomainExceptions("Reservation dates for update must be futures dates");
         }
         if (!checkOut.after(checkIn)) {
-            return "Error in reservation: Check-out data must be after check-in date";
+            throw new DomainExceptions("Check-out data must be after check-in date");
         }
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        return null;
     }
 
     @Override
