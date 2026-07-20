@@ -1,10 +1,9 @@
 package com.javacourseexercises;
 
-import com.javacourseexercises.files.application.Program;
+import com.javacourseexercises.Interface1.application.Program;
 
 public class Main {
     public static void main(String[] args) {
-        Program program = new Program();
-        program.run();
+        Program.run();
     }
 }
