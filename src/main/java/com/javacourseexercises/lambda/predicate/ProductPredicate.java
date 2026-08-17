@@ -1,5 +1,7 @@
 package com.javacourseexercises.lambda.predicate;
 
+import com.javacourseexercises.lambda.Product;
+
 import java.util.function.Predicate;
 
 public class ProductPredicate implements Predicate<Product> {

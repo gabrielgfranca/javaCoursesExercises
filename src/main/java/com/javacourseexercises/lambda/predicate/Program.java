@@ -1,5 +1,7 @@
 package com.javacourseexercises.lambda.predicate;
 
+import com.javacourseexercises.lambda.Product;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
